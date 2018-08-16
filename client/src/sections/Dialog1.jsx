@@ -16,6 +16,8 @@ import GridContainer from "../components/Grid/GridContainer.jsx";
 import GridItem from "../components/Grid/GridItem.jsx";
 import Button from "../components/CustomButtons/Button.jsx";
 import javascriptStyles from "../assets/jss/material-kit-react/views/components-sections/javascriptStyles.jsx";
+//img
+import image from '../assets/img/photos/3.JPG';
 
 function Transition(props) {
   return <Slide direction="down" {...props} />;
@@ -87,12 +89,21 @@ class SectionJavascript extends React.Component {
                     >
                       <Close className={classes.modalClose} />
                     </IconButton>
-                    <h4 className={classes.modalTitle}>Modal title</h4>
+                    <h4 className={classes.modalTitle}>Analiza składu organizmu.</h4>
                   </DialogTitle>
                   <DialogContent
                     id="classic-modal-slide-description"
                     className={classes.modalBody}
                   >
+                  <img
+                    style={{display: "block", borderRadius: "8px", 
+                    marginLeft: "auto",
+                    marginRight: "auto",
+                    width: "50%"}}
+                    // className={classes.imgCardTop}
+                    src={image}
+                    alt="Card-img-cap"
+                  />
                     <p>
                       Far far away, behind the word mountains, far from the
                       countries Vokalia and Consonantia, there live the blind
@@ -109,15 +120,12 @@ class SectionJavascript extends React.Component {
                     </p>
                   </DialogContent>
                   <DialogActions className={classes.modalFooter}>
-                    <Button color="transparent" simple>
-                      Nice Button
-                    </Button>
                     <Button
                       onClick={() => this.handleClose("classicModal")}
                       color="danger"
                       simple
                     >
-                      Close
+                      Zamknij
                     </Button>
                   </DialogActions>
                 </Dialog>

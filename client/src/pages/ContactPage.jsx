@@ -37,7 +37,7 @@ class ProfilePage extends React.Component {
         <Header
           color="transparent"
           brand="Dietetyka i Odchudzanie"
-          rightLinks={<HeaderLinks dontShowAboutMe/>}
+          rightLinks={<HeaderLinks />}
           fixed          
           changeColorOnScroll={{
             height: 200,
@@ -47,43 +47,27 @@ class ProfilePage extends React.Component {
         />
         <Parallax small filter image={require("../assets/img/dark_healthy_2.jpg")} />
         <div className={classNames(classes.main, classes.mainRaised)}>
-          <div>
-            <div className={classes.container}>
-              <GridContainer justify="center">
-                <GridItem xs={12} sm={12} md={6}>
-                  <div className={classes.profile}>
-                    <div>
-                      <img src={profile} alt="..." className={imageClasses} />
-                    </div>
-                    <div className={classes.name}>
-                      <h3 className={classes.title}>Małgorzata Karolak</h3>
-                      <h6>DIETETYK</h6>
-                    </div>
-                  </div>
-                </GridItem>
-              </GridContainer>
-              <div className={classes.description}>
-                <p style={{textJustify: "auto"}}> 
-                Invenire aliquando sit ad. Homero feugait commune eum te, intellegam assueverit ne vix. 
-                Iriure voluptua ad vis, delenit petentium ex mea. Vix saepe graecis percipitur no, his te 
-                vero liber dissentiunt. Eos reque consetetur ut, cu mucius maiorum pertinax eos. Ea pro
-                agam nobis veritus, causae facilis sea te.
+            <div className={classes.description}>
+              <h2>
+              Zadzwoń i umów się na wizytę lub przyjdź osobiście w godz. 9-12.
+              </h2>
+              <h3>
+              (od poniedziałku do piątku).
+              </h3>
+              <p style={{textJustify: "inter-word"}}>
+              Pro ea assum dicit invidunt. Mei doming fabellas electram at, enim voluptua cum ea. 
+              Ea duo tempor quodsi alienum, mea te tibique accusata conceptam. Ipsum copiosae ne quo,
+              ei sea tantas nostrud. Mea et iriure volumus. At graeco labitur eam. Eum ut porro persequeris 
+              reprehendunt, ullum dissentiunt id pro, usu et illum pericula interpretaris.
 
-                Pro ea assum dicit invidunt. Mei doming fabellas electram at, enim voluptua cum ea. 
-                Ea duo tempor quodsi alienum, mea te tibique accusata conceptam. Ipsum copiosae ne quo,
-                ei sea tantas nostrud. Mea et iriure volumus. At graeco labitur eam. Eum ut porro persequeris 
-                reprehendunt, ullum dissentiunt id pro, usu et illum pericula interpretaris.
-
-                Repudiare scribentur ad per, eam id hinc corrumpit dissentiet. Sit esse quas graeco id, 
-                mei ad quis consul consulatu. Cu ius vidisse scribentur. Malis errem dissentiet et pri, ne 
-                modo electram neglegentur duo, paulo accusata neglegentur at nec. Pri postulant repudiandae ad,
-                at latine sanctus explicari vix. Vix ne labore veritus, amet saepe quo ad. Ut brute erant paulo est,
-                te utamur nostrum cum, has omnium mentitum an.
-                {" "}
-                </p>
-              </div>
+              Repudiare scribentur ad per, eam id hinc corrumpit dissentiet. Sit esse quas graeco id, 
+              mei ad quis consul consulatu. Cu ius vidisse scribentur. Malis errem dissentiet et pri, ne 
+              modo electram neglegentur duo, paulo accusata neglegentur at nec. Pri postulant repudiandae ad,
+              at latine sanctus explicari vix. Vix ne labore veritus, amet saepe quo ad. Ut brute erant paulo est,
+              te utamur nostrum cum, has omnium mentitum an.
+              {" "}
+              </p>
             </div>
-          </div>
         </div>
         <p>  &nbsp;</p>
         <p>  &nbsp;</p>
@@ -96,7 +80,6 @@ class ProfilePage extends React.Component {
         <p>  &nbsp;</p>
         <p>  &nbsp;</p>
         <Footer />
-
       </div>
     );
   }

@@ -46,7 +46,7 @@ function HeaderLinks({ ...props }) {
         ):(
         <span/>
       )}
-        <Link to={"/reviews"} className={classes.navLink}>
+        <Link to={"/"} className={classes.navLink}>
           Opinie klientów
         </Link>
       <Tooltip
@@ -61,7 +61,7 @@ function HeaderLinks({ ...props }) {
             href="https://www.facebook.com/dietetykaiodchudzanie"
             className={classes.margin5}
           >
-            <i className="fa fa-facebook-official" />
+            <i className={classes.socialIcons + " fab fa-facebook"} />
         </Button>
       </Tooltip>
       <Tooltip
@@ -76,7 +76,7 @@ function HeaderLinks({ ...props }) {
             href="https://www.facebook.com/dietetykaiodchudzanie"
             className={classes.margin5}
           >
-            <i className="fa fa-instagram" />
+            <i className={classes.socialIcons + " fab fa-instagram"} />
           </Button>
       </Tooltip>
       

@@ -55,9 +55,7 @@ class Toolbar extends React.Component{
                     <h3 className={classes.subtitle}>
                     {/* Chcesz schudnąć? */}
                     At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium 
-                    voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati 
-                    cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, 
-                    id est laborum et dolorum fuga. 
+                    voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi.
                     </h3>
                     <GridContainer justify="center">
                         <GridItem>
@@ -77,9 +75,7 @@ class Toolbar extends React.Component{
                 <FirstText/>
                 <InfoCards/>
                 <SecondText/>
-                <div className={classes.container}>
-                    <PricingTable/>
-                </div>
+                
             </div>
             {/* <div className={classNames(classes.main, classes.mainRaised)}>
                 <GridItem md={12} className={classes.textCenter}>
@@ -91,9 +87,9 @@ class Toolbar extends React.Component{
                 </GridItem>
             </div> */}
             {/* <SectionCarousel/>    */}
-            <Button color="rose" round size="sm">
+            {/* <Button color="rose" round size="sm">
                 <People className={classes.icons} /> Arrow Up!
-            </Button>
+            </Button> */}
             
             <Footer/>
         </div>

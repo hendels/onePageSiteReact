@@ -54,30 +54,42 @@ function CustomizedTable(props) {
   const { classes } = props;
 
   return (
-    <Paper className={classes.root}>
-      <Table className={classes.table}>
-        <TableHead>
-          <TableRow>
-            <CustomTableCell>Nazwa</CustomTableCell>
-            <CustomTableCell>Opis</CustomTableCell>
-            <CustomTableCell numeric>Cena (zł)</CustomTableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {data.map(n => {
-            return (
-              <TableRow className={classes.row} key={n.id}>
-                <CustomTableCell component="th" scope="row">
-                  {n.name}
-                </CustomTableCell>
-                <CustomTableCell>{n.description}</CustomTableCell>
-                <CustomTableCell numeric>{n.price}</CustomTableCell>
-              </TableRow>
-            );
-          })}
-        </TableBody>
-      </Table>
-    </Paper>
+    <div>
+      <Paper className={classes.root}>
+        <Table className={classes.table}>
+          <TableHead>
+            <TableRow>
+              <CustomTableCell>Nazwa</CustomTableCell>
+              <CustomTableCell>Opis</CustomTableCell>
+              <CustomTableCell numeric>Cena (zł)</CustomTableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {data.map(n => {
+              return (
+                <TableRow className={classes.row} key={n.id}>
+                  <CustomTableCell component="th" scope="row">
+                    {n.name}
+                  </CustomTableCell>
+                  <CustomTableCell>{n.description}</CustomTableCell>
+                  <CustomTableCell numeric>{n.price}</CustomTableCell>
+                </TableRow>
+              );
+            })}
+          </TableBody>
+        </Table>
+      </Paper>    
+      <p>  &nbsp;</p>
+      <p>  &nbsp;</p>
+      <p>  &nbsp;</p>
+      <p>  &nbsp;</p>
+      <p>  &nbsp;</p>
+      <p>  &nbsp;</p>
+      <p>  &nbsp;</p>
+      <p>  &nbsp;</p>
+      <p>  &nbsp;</p>
+      <p>  &nbsp;</p>
+    </div>
   );
 }
 

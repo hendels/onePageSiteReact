@@ -17,7 +17,8 @@ const profilePageStyle = {
     margin: "1.071rem auto 0",
     maxWidth: "600px",
     color: "#999",
-    textAlign: "center !important"
+    textAlign: "center !important",
+    textJustify: "inter-word"
   },
   name: {
     marginTop: "-80px"

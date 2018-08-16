@@ -27,22 +27,10 @@ class SectionCompletedExamples extends React.Component {
               repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur 
               a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur
               aut perferendis doloribus asperiores repellat.
-              </h4>
-              <h3>
-              Zadzwoń i umów się na wizytę lub przyjdź osobiście w godz. 9-12 (od poniedziałku do piątku).
-              </h3>
+              </h4>              
             </GridItem>
             <GridItem xs={12} sm={12} md={8}>
               <SectionCarousel/>   
-            </GridItem>
-            <GridItem justify="center">
-            <Button color="facebook">
-              <i className="fa fa-facebook-official" />{" "}
-              
-            </Button>
-            <Button color="google">
-              <i className="fa fa-google-plus-g" />
-            </Button>
             </GridItem>
           </GridContainer>
         </div>

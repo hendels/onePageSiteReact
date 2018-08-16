@@ -10,9 +10,9 @@ import GridContainer from "../Grid/GridContainer.jsx";
 import GridItem from "../Grid/GridItem.jsx";
 import Card from "../Card/Card.jsx";
 import carouselStyle from "../../assets/jss/material-kit-react/views/components-sections/carouselStyle.jsx";
-import image1 from "../../assets/img/photos/1.JPG";
-import image2 from "../../assets/img/photos/2.JPG";
-import image3 from "../../assets/img/photos/3.JPG";
+import image1 from "../../assets/img/photos/hires_1.JPG";
+import image2 from "../../assets/img/photos/hires_2.JPG";
+import image3 from "../../assets/img/photos/hires_3.JPG";
 //import classess from './Carousel.css';
 
 class SectionCarousel extends React.Component {
@@ -27,22 +27,6 @@ class SectionCarousel extends React.Component {
       autoplay: false
     };
     return (
-      // <div className={classess.container}>
-      //   <Carousel {...settings}>
-      //     <div>
-      //       <img src="http://placekitten.com/g/400/200" />
-      //     </div>
-      //     <div>
-      //       <img src="http://placekitten.com/g/400/200" />
-      //     </div>
-      //     <div>
-      //       <img src="http://placekitten.com/g/400/200" />
-      //     </div>
-      //     <div>
-      //       <img src="http://placekitten.com/g/400/200" />
-      //     </div>
-      //   </Carousel>
-      // </div>
       <div className={classes.section}>
         <div className={classes.container}>
           <GridContainer>
@@ -57,8 +41,8 @@ class SectionCarousel extends React.Component {
                     />
                     <div className="slick-caption">
                       <h4>
-                        <LocationOn className="slick-icons" />Yellowstone
-                        National Park, United States
+                        {/* <LocationOn className="slick-icons" />Lorem Ipsum Dolor */}
+                        <p />Lorem Ipsum Dolor
                       </h4>
                     </div>
                   </div>
@@ -70,8 +54,8 @@ class SectionCarousel extends React.Component {
                     />
                     <div className="slick-caption">
                       <h4>
-                        <LocationOn className="slick-icons" />Somewhere Beyond,
-                        United States
+                        <p />In sit vocibus gloriatur
+                        {/* <LocationOn className="slick-icons" />In sit vocibus gloriatur */}
                       </h4>
                     </div>
                   </div>
@@ -83,8 +67,8 @@ class SectionCarousel extends React.Component {
                     />
                     <div className="slick-caption">
                       <h4>
-                        <LocationOn className="slick-icons" />Yellowstone
-                        National Park, United States
+                        {/* <LocationOn className="slick-icons" />Vis periculis prodesset et */}
+                        <p />Vis periculis prodesset et
                       </h4>
                     </div>
                   </div>

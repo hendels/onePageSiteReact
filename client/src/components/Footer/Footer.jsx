@@ -28,22 +28,22 @@ function Footer({ ...props }) {
           <List className={classes.list}>
             <ListItem className={classes.inlineBlock}>
               <a
-                href="https://www.creative-tim.com/"
+                // href="https://www.creative-tim.com/"
                 className={classes.block}
                 target="_blank"
               >
-                Nicely Done
+                Nicely Done 2018
               </a>
             </ListItem>
-            <ListItem className={classes.inlineBlock}>
+            {/* <ListItem className={classes.inlineBlock}>
               <a
-                href="https://www.creative-tim.com/presentation"
+                // href="https://www.creative-tim.com/presentation"
                 className={classes.block}
                 target="_blank"
               >
                 About us
               </a>
-            </ListItem>
+            </ListItem> */}
             {/* <ListItem className={classes.inlineBlock}>
               <a
                 href="http://blog.creative-tim.com/"
