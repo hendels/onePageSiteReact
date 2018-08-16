@@ -3,5 +3,5 @@ const express = require('express');
 const app = express();
 console.log('==================start====================');
 
-app.listen(4000);
+app.listen(process.env.PORT);
 console.log('===============end=================');
