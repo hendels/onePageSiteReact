@@ -7,7 +7,7 @@
     "start": "node index.js",
     "heroku-postbuild": "cd client && npm install && npm run build",
     "server": "nodemon index.js",
-    "client": "npm run start --prefix client",    
+    "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server \" \"npm run client\""
   },
   "author": "",
@@ -21,6 +21,7 @@
     "heroku": "^7.7.10",
     "nodemon": "^1.18.3",
     "password-generator": "^2.2.0",
-    "prop-types": "^15.6.2"
+    "prop-types": "^15.6.2",
+    "sparkpost": "^2.1.2"
   }
 }

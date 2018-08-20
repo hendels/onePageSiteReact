@@ -7,6 +7,8 @@ import AboutMePage from './pages/ProfilePage.jsx';
 import ContactPage from './pages/ContactPage.jsx';
 import PricingPage from './pages/PricingPage.jsx';
 
+import ScrollUpArrow from './components/ScrollUpArrow/ScrollUpArrow.jsx'
+
 import "./assets/scss/material-kit-react.css?v=1.1.0";
 
 //forgoten :D
@@ -18,6 +20,7 @@ class App extends Component {
       <div >
         <BrowserRouter>
           <div>
+            <ScrollUpArrow/>
             <Route exact path="/" component={Landing}/>
             <Route exact path="/aboutme" component={AboutMe}/>
             <Route exact path="/contact" component={Contact}/>
