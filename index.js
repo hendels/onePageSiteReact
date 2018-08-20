@@ -2,8 +2,12 @@ const express = require('express');
 const path = require('path');
 const generatePassword = require('password-generator');
 const app = express();
+const prod = true;
+if (!prod) {
+  const mailgunConfig = require('./config/keys');
+} else
+  const mailgunConfig = '';
 
-const mailgunConfig = require('./config/keys');
 
 //smpt definition
 console.log('==================start====================');
