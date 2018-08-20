@@ -3,10 +3,7 @@ const path = require('path');
 const generatePassword = require('password-generator');
 const app = express();
 const prod = true;
-if (!prod) {
-  const mailgunConfig = require('./config/keys');
-} else
-  const mailgunConfig = '';
+
 
 
 //smpt definition
@@ -14,8 +11,15 @@ console.log('==================start====================');
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, 'client/build')));
 //mailgun
-var mailgun = require('mailgun-js')({apiKey: mailgunConfig.mailgunApiKey || 
-  process.env.MAILGUN_API_KEY, domain: mailgunConfig.mailgunDomain || process.env.MAILGUN_DOMAIN});
+if (!prod) {
+  const mailgunConfig = require('./config/keys');
+  var mailgun = require('mailgun-js')({apiKey: mailgunConfig.mailgunApiKey  
+    , domain: mailgunConfig.mailgunDomain });
+} else
+{
+  var mailgun = require('mailgun-js')({apiKey: process.env.MAILGUN_API_KEY, domain: process.env.MAILGUN_DOMAIN});
+}
+
  
 
 
