@@ -3,3 +3,5 @@
 # dependencies
 /node_modules
 
+# files
+keys.js

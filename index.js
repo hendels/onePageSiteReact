@@ -1,19 +1,21 @@
 const express = require('express');
 const path = require('path');
 const generatePassword = require('password-generator');
-const SparkPost = require('sparkpost');
 const app = express();
 
+const mailgunConfig = require('./config/keys');
+
 //smpt definition
-const apiKey = "01c53c7f5ca8658c8991f2f24ac2d38f140cf9e3" || process.env.SPARKPOST_API_KEY;
-sparkpost = new SparkPost(apiKey);
 console.log('==================start====================');
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, 'client/build')));
-// // views is directory for all template files
-// app.set('views', __dirname + '/views');
-// app.set('view engine', 'ejs');
+//mailgun
+var mailgun = require('mailgun-js')({apiKey: mailgunConfig.mailgunApiKey || 
+  process.env.MAILGUN_API_KEY, domain: mailgunConfig.mailgunDomain || process.env.MAILGUN_DOMAIN});
+ 
 
+
+//
 app.get('/', function(request, response) {
   response.render('pages/index');
 });
@@ -37,32 +39,20 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname+'/client/build/index.html'));
   });
 //send email
+
 app.post('/send', function(request, response) {
-  var recipients = "p.harendarz@gmail.com"
-    , message = "test from heroku!";
-
-  // recipients.forEach(function(val, index) {
-  //   recipients[index] = { address: val };
-  // });
-
-  sp.transmissions.send({
-    transmissionBody: {
-      content: {
-        from: 'heroku-node-js-example@sparkpostbox.com',
-        subject: 'Heroku Node.js Example',
-        html: '<html><body>' + message + '</body></html>'
-      },
-      options: {
-        sandbox: false
-      },
-      recipients: recipients
+  var data = {
+    from: 'Excited User <p.harendarz@gmail.com>',
+    to: 'p.harendarz@gmail.com',
+    subject: 'Hello',
+    text: 'Testing some Mailgun send!!'
+  };
+   
+  mailgun.messages().send(data, function (error, body) {
+    if (error) {
+      console.log(error);
     }
-  }, function(err, apiResponse) {
-    if(err) {
-      response.json(err);
-    } else {
-      response.json(apiResponse.body);
-    }
+    console.log(body);
   });
 });
 
