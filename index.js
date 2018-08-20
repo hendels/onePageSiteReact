@@ -12,9 +12,9 @@ console.log('==================start====================');
 app.use(express.static(path.join(__dirname, 'client/build')));
 //mailgun
 if (!prod) {
-  const mailgunConfig = require('./config/keys');
-  var mailgun = require('mailgun-js')({apiKey: mailgunConfig.mailgunApiKey  
-    , domain: mailgunConfig.mailgunDomain });
+  // const mailgunConfig = require('./config/keys');
+  // var mailgun = require('mailgun-js')({apiKey: mailgunConfig.mailgunApiKey  
+  //   , domain: mailgunConfig.mailgunDomain });
 } else
 {
   var mailgun = require('mailgun-js')({apiKey: process.env.MAILGUN_API_KEY, domain: process.env.MAILGUN_DOMAIN});
