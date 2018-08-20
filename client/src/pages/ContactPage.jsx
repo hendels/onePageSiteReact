@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // @material-ui/core components
@@ -17,7 +18,7 @@ import GridContainer from "../components/Grid/GridContainer.jsx";
 import GridItem from "../components/Grid/GridItem.jsx";
 // import NavPills from "components/NavPills/NavPills.jsx";
 import Parallax from "../components/Parallax/Parallax.jsx";
-
+import CustomInput from "../components/CustomInput/CustomInput.jsx";
 import profile from "../assets/img/thumbnails/face_vector.jpg";
 
 
@@ -60,13 +61,31 @@ class ProfilePage extends React.Component {
               ei sea tantas nostrud. Mea et iriure volumus. At graeco labitur eam. Eum ut porro persequeris 
               reprehendunt, ullum dissentiunt id pro, usu et illum pericula interpretaris.
 
-              Repudiare scribentur ad per, eam id hinc corrumpit dissentiet. Sit esse quas graeco id, 
-              mei ad quis consul consulatu. Cu ius vidisse scribentur. Malis errem dissentiet et pri, ne 
-              modo electram neglegentur duo, paulo accusata neglegentur at nec. Pri postulant repudiandae ad,
-              at latine sanctus explicari vix. Vix ne labore veritus, amet saepe quo ad. Ut brute erant paulo est,
-              te utamur nostrum cum, has omnium mentitum an.
               {" "}
               </p>
+              <p>  &nbsp;</p>
+              <p>  &nbsp;</p>
+              {/* <h3>
+              Lub wyślij wiadomość:
+              </h3> */}
+              <GridItem xs={1} sm={1} md={2} lg={12}>
+                <CustomInput
+                  labelText="Lub wyślij wiadomość"
+                  id="float"
+                  formControlProps={{
+                    fullWidth: true
+                  }}
+                />
+              </GridItem>
+              <GridContainer justify="center">
+                  <GridItem>
+                      <Link to={"/send"} className={classes.link}>
+                          <Button color="rose" round size="lg">
+                              Wyślij
+                          </Button>
+                      </Link>
+                  </GridItem>
+              </GridContainer>
             </div>
         </div>
         <p>  &nbsp;</p>
