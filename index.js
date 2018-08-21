@@ -63,8 +63,6 @@ app.get('*', (req, res) => {
   });
 //send email
 
-// var api_key = 'ccc83115d2c795ebc91860bdae499400-a4502f89-cc1c9ae8';
-// var domain = 'sandboxa0f967162ee142029018cbc3d1852cc5.mailgun.org';
 var api_key = process.env.MAILGUN_API_KEY;
 var domain = process.env.MAILGUN_DOMAIN;
 var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});

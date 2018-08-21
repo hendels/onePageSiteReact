@@ -48,45 +48,80 @@ class ProfilePage extends React.Component {
         />
         <Parallax small filter image={require("../assets/img/dark_healthy_2.jpg")} />
         <div className={classNames(classes.main, classes.mainRaised)}>
-            <div className={classes.description}>
+            {/* <div className={classes.description}> */}
+            <div className={classes.container}>
+              <p>  &nbsp;</p>
+              <p>  &nbsp;</p>
               <h2>
               Zadzwoń i umów się na wizytę lub przyjdź osobiście w godz. 9-12.
               </h2>
               <h3>
               (od poniedziałku do piątku).
               </h3>
-              <p style={{textJustify: "inter-word"}}>
+              <p>  &nbsp;</p>
+              <h4>
+              Działoszyn
+              </h4>
+              <h4>
+              ul. Piłsudskiego 21
+              </h4>
+              <h4>
+              (w budynku Ośrodka Zdrowia)
+              </h4>
+              <Button color="primary" round size="lg"><Favorite /> 502 125 790</Button>
+              {/* <p style={{textJustify: "inter-word"}}>
               Pro ea assum dicit invidunt. Mei doming fabellas electram at, enim voluptua cum ea. 
               Ea duo tempor quodsi alienum, mea te tibique accusata conceptam. Ipsum copiosae ne quo,
               ei sea tantas nostrud. Mea et iriure volumus. At graeco labitur eam. Eum ut porro persequeris 
               reprehendunt, ullum dissentiunt id pro, usu et illum pericula interpretaris.
 
               {" "}
-              </p>
+              </p> */}
               <p>  &nbsp;</p>
-              <p>  &nbsp;</p>
+              <p>  &nbsp;</p>              
+            {/* </div> */}
+            
               <h3>
               Lub wyślij wiadomość:
               </h3>
-              <GridItem xs={1} sm={1} md={6} lg={6}>
-                <CustomInput
-                  labelText="E-mail"
-                  id="float"
-                  formControlProps={{
-                    fullWidth: false
-                  }}
-                />
-              </GridItem>
-              <GridItem xs={1} sm={1} md={2} lg={12}>
-                <CustomInput
-                  labelText="Treść"
-                  id="float"
-                  formControlProps={{
-                    fullWidth: true
-                  }}
-                />
-              </GridItem>
-              
+              <GridContainer justify="center">
+                <GridItem xs={1} sm={4} md={2} lg={4}>
+                  <CustomInput
+                    labelText="Imię"
+                    id="float"
+                    formControlProps={{
+                      fullWidth: false
+                    }}
+                  />
+                </GridItem>
+                <GridItem xs={1} sm={4} md={2} lg={4}>
+                  <CustomInput
+                    labelText="E-mail"
+                    id="float"
+                    formControlProps={{
+                      fullWidth: false
+                    }}
+                  />
+                </GridItem>
+                <GridItem xs={1} sm={4} md={2} lg={4}>
+                  <CustomInput
+                    labelText="Telefon"
+                    id="float"
+                    formControlProps={{
+                      fullWidth: false
+                    }}
+                  />
+                </GridItem>
+                <GridItem xs={1} sm={1} md={2} lg={12}>
+                  <CustomInput
+                    labelText="Treść"
+                    id="float"
+                    formControlProps={{
+                      fullWidth: true
+                    }}
+                  />
+                </GridItem>
+              </GridContainer>
               <GridContainer justify="center">
                   <GridItem>
                       <Link to={"/send"} className={classes.link}>
