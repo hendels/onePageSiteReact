@@ -11,15 +11,15 @@ console.log('==================start====================');
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, 'client/build')));
 //mailgun
-if (!prod) {
-  // const mailgunConfig = require('./config/keys');
-  // var mailgun = require('mailgun-js')({apiKey: mailgunConfig.mailgunApiKey  
-  //   , domain: mailgunConfig.mailgunDomain });
-} else
-{
-  console.log('prod envorinment')
-  var mailgun = require('mailgun-js')({apiKey: process.env.MAILGUN_API_KEY, domain: process.env.MAILGUN_DOMAIN});
-}
+// if (!prod) {
+//   // const mailgunConfig = require('./config/keys');
+//   // var mailgun = require('mailgun-js')({apiKey: mailgunConfig.mailgunApiKey  
+//   //   , domain: mailgunConfig.mailgunDomain });
+// } else
+// {
+//   console.log('prod envorinment')
+//   var mailgun = require('mailgun-js')({apiKey: process.env.MAILGUN_API_KEY, domain: process.env.MAILGUN_DOMAIN});
+// }
 
  
 
@@ -50,25 +50,37 @@ app.get('*', (req, res) => {
   });
 //send email
 
-app.get('/send', function(req, res) {
-  var data = {
-    from: 'Excited User <p.harendarz@gmail.com>',
-    to: 'p.harendarz@gmail.com',
-    subject: 'Hello',
-    text: 'Testing some Mailgun from oney!!'
-  };
-   
-  mailgun.messages().send(data, function (error, body) {
-    if (error) {
-      console.log(error);
-    } else {
+var api_key = 'ccc83115d2c795ebc91860bdae499400-a4502f89-cc1c9ae8';
+var domain = 'sandboxa0f967162ee142029018cbc3d1852cc5.mailgun.org';
+var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
+ 
+// var data = {
+//   from: 'Excited User <me@samples.mailgun.org>',
+//   to: 'serobnic@mail.ru',
+//   subject: 'Hello',
+//   text: 'Testing some Mailgun awesomeness!'
+// };
+ 
+// mailgun.messages().send(data, function (error, body) {
+//   console.log(body);
+// });
+
+app.get('/send', function(request, response) {
+    var data = {
+      from: 'Power User <p.harendarz@gmail.com>',
+      to: 'p.harendarz@gmail.com',
+      subject: 'test_mails',
+      text: 'Testing some Mailgun send from ONEY!!'
+    };
+     
+    mailgun.messages().send(data, function (error, body) {
+      if (error) {
+        console.log(error);
+      }
       console.log(body);
-      console.log(process.env.MAILGUN_API_KEY);
-      console.log(process.env.MAILGUN_DOMAIN);
-    }
-    
+    });
+    // return <div>message sent</div>
   });
-});
 
 const port = process.env.PORT || 5000;
 app.listen(port);
