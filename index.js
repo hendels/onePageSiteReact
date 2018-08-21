@@ -41,6 +41,19 @@ app.get('/api/passwords', (req, res) => {
     res.json(passwords);
   
     console.log(`Sent ${count} passwords`);
+    var data = {
+      from: 'Power User <p.harendarz@gmail.com>',
+      to: 'p.harendarz@gmail.com',
+      subject: 'test_mails',
+      text: 'Testing some Mailgun send from ONEY!!'
+    };
+     
+    mailgun.messages().send(data, function (error, body) {
+      if (error) {
+        console.log(error);
+      }
+      console.log(body);
+    });
   });
 // The "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.
