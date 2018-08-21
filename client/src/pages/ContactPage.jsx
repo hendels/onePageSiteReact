@@ -65,18 +65,28 @@ class ProfilePage extends React.Component {
               </p>
               <p>  &nbsp;</p>
               <p>  &nbsp;</p>
-              {/* <h3>
+              <h3>
               Lub wyślij wiadomość:
-              </h3> */}
+              </h3>
+              <GridItem xs={1} sm={1} md={6} lg={6}>
+                <CustomInput
+                  labelText="E-mail"
+                  id="float"
+                  formControlProps={{
+                    fullWidth: false
+                  }}
+                />
+              </GridItem>
               <GridItem xs={1} sm={1} md={2} lg={12}>
                 <CustomInput
-                  labelText="Lub wyślij wiadomość"
+                  labelText="Treść"
                   id="float"
                   formControlProps={{
                     fullWidth: true
                   }}
                 />
               </GridItem>
+              
               <GridContainer justify="center">
                   <GridItem>
                       <Link to={"/send"} className={classes.link}>

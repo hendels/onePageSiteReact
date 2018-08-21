@@ -17,6 +17,7 @@ if (!prod) {
   //   , domain: mailgunConfig.mailgunDomain });
 } else
 {
+  console.log('prod envorinment')
   var mailgun = require('mailgun-js')({apiKey: process.env.MAILGUN_API_KEY, domain: process.env.MAILGUN_DOMAIN});
 }
 
@@ -44,23 +45,28 @@ app.get('/api/passwords', (req, res) => {
 // The "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname+'/client/build/index.html'));
+    // res.sendFile(path.join(__dirname+'/client/build/index.html'));
+    response.render('pages/index');
   });
 //send email
 
-app.post('/send', function(request, response) {
+app.get('/send', function(req, res) {
   var data = {
     from: 'Excited User <p.harendarz@gmail.com>',
     to: 'p.harendarz@gmail.com',
     subject: 'Hello',
-    text: 'Testing some Mailgun send!!'
+    text: 'Testing some Mailgun from oney!!'
   };
    
   mailgun.messages().send(data, function (error, body) {
     if (error) {
       console.log(error);
+    } else {
+      console.log(body);
+      console.log(process.env.MAILGUN_API_KEY);
+      console.log(process.env.MAILGUN_DOMAIN);
     }
-    console.log(body);
+    
   });
 });
 
