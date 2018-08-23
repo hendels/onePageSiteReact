@@ -7,7 +7,8 @@ import withStyles from "@material-ui/core/styles/withStyles";
 // @material-ui/icons
 import Camera from "@material-ui/icons/Camera";
 import Palette from "@material-ui/icons/Palette";
-import Favorite from "@material-ui/icons/Favorite";
+import Phone from "@material-ui/icons/Phone";
+import Email from "@material-ui/icons/Email";
 // core components
 import Header from "../components/Navigation/Header/Header.jsx";
 import HeaderLinks from "../components/Navigation/Header/HeaderLinks.jsx";
@@ -20,7 +21,7 @@ import GridItem from "../components/Grid/GridItem.jsx";
 import Parallax from "../components/Parallax/Parallax.jsx";
 import CustomInput from "../components/CustomInput/CustomInput.jsx";
 import profile from "../assets/img/thumbnails/face_vector.jpg";
-
+import Grid from '@material-ui/core/Grid';
 
 import profilePageStyle from "../assets/jss/material-kit-react/views/profilePage.jsx";
 
@@ -53,39 +54,38 @@ class ProfilePage extends React.Component {
               <p>  &nbsp;</p>
               <p>  &nbsp;</p>
               <h2>
-              Zadzwoń i umów się na wizytę lub przyjdź osobiście w godz. 9-12.
+              <b>Zadzwoń i umów się na wizytę </b>
               </h2>
               <h3>
-              (od poniedziałku do piątku).
-              </h3>
+              lub przyjdź osobiście w godz. <b>9:00-12:00</b> (od poniedziałku do piątku).
+              </h3>              
               <p>  &nbsp;</p>
-              <h4>
-              Działoszyn
-              </h4>
-              <h4>
-              ul. Piłsudskiego 21
-              </h4>
-              <h4>
-              (w budynku Ośrodka Zdrowia)
-              </h4>
-              <Button color="primary" round size="lg"><Favorite /> 502 125 790</Button>
-              {/* <p style={{textJustify: "inter-word"}}>
-              Pro ea assum dicit invidunt. Mei doming fabellas electram at, enim voluptua cum ea. 
-              Ea duo tempor quodsi alienum, mea te tibique accusata conceptam. Ipsum copiosae ne quo,
-              ei sea tantas nostrud. Mea et iriure volumus. At graeco labitur eam. Eum ut porro persequeris 
-              reprehendunt, ullum dissentiunt id pro, usu et illum pericula interpretaris.
-
-              {" "}
-              </p> */}
+              <Grid container spacing={48} justify="space-between">
+                <Grid item xs={6}>
+                    <h4><b>
+                    Działoszyn
+                    </b></h4>
+                    <h4>
+                    ul. Piłsudskiego 21a
+                    </h4>
+                    <h4>
+                    (w budynku Ośrodka Zdrowia)
+                    </h4>
+                </Grid>
+                <Grid item xs={6} direction="column-reverse">
+                  <Button color="info" ><Phone /> 502 125 790</Button>
+                  <Button color="success" ><Email /> malgorzata.karolak@gmail.com</Button>
+                  <Button color="facebook" ><i className={classes.socialIcons + "  fab fa-facebook"} /> /dietetykaiodchudzanie</Button>
+                </Grid>
+              </Grid>
               <p>  &nbsp;</p>
               <p>  &nbsp;</p>              
             {/* </div> */}
-            
               <h3>
               Lub wyślij wiadomość:
               </h3>
-              <GridContainer justify="center">
-                <GridItem xs={1} sm={4} md={2} lg={4}>
+              <GridContainer justify="flex-start">
+                <GridItem xs={4} sm={4} md={4} lg={4}>
                   <CustomInput
                     labelText="Imię"
                     id="float"
@@ -94,7 +94,7 @@ class ProfilePage extends React.Component {
                     }}
                   />
                 </GridItem>
-                <GridItem xs={1} sm={4} md={2} lg={4}>
+                <GridItem xs={4} sm={4} md={4} lg={4}>
                   <CustomInput
                     labelText="E-mail"
                     id="float"
@@ -103,7 +103,7 @@ class ProfilePage extends React.Component {
                     }}
                   />
                 </GridItem>
-                <GridItem xs={1} sm={4} md={2} lg={4}>
+                <GridItem xs={4} sm={4} md={4} lg={4}>
                   <CustomInput
                     labelText="Telefon"
                     id="float"
@@ -112,7 +112,7 @@ class ProfilePage extends React.Component {
                     }}
                   />
                 </GridItem>
-                <GridItem xs={1} sm={1} md={2} lg={12}>
+                <GridItem xs={10} sm={10} md={10} lg={10}>
                   <CustomInput
                     labelText="Treść"
                     id="float"
@@ -122,15 +122,26 @@ class ProfilePage extends React.Component {
                   />
                 </GridItem>
               </GridContainer>
-              <GridContainer justify="center">
-                  <GridItem>
-                      <Link to={"/send"} className={classes.link}>
-                          <Button color="rose" round size="lg">
-                              Wyślij
-                          </Button>
-                      </Link>
-                  </GridItem>
-              </GridContainer>
+              <Grid container justify="flex-start">
+                <Grid item>
+                  <Link to={"/send"} className={classes.link}>
+                    <Button color="info">
+                        Wyślij
+                    </Button>
+                  </Link>
+                </Grid>
+                <Grid item>
+                  <Link to={"/api/passwords"} className={classes.link}>
+                    <Button color="rose">
+                        Wyczyść
+                    </Button>
+                  </Link>
+                </Grid>
+              </Grid>
+              <p>  &nbsp;</p>
+              <p>  &nbsp;</p>
+              <p>  &nbsp;</p>
+              <p>  &nbsp;</p>
             </div>
         </div>
         <p>  &nbsp;</p>
