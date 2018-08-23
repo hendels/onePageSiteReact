@@ -26,6 +26,19 @@ import Grid from '@material-ui/core/Grid';
 import profilePageStyle from "../assets/jss/material-kit-react/views/profilePage.jsx";
 
 class ProfilePage extends React.Component {
+  constructor(){
+    super();
+    this.state = {
+      phoneText: ''
+    };
+    this.chandleChange = this.chandleChange.bind(this);
+  }
+  chandleChange({target}) {
+    this.setState ({
+      phoneText: target.value
+    });
+    console.log(this.state.phoneText);
+  }
   render() {
     const { classes, ...rest } = this.props;
     const imageClasses = classNames(
@@ -33,6 +46,7 @@ class ProfilePage extends React.Component {
       classes.imgRoundedCircle,
       classes.imgFluid
     );
+
     const navImageClasses = classNames(classes.imgRounded, classes.imgGallery);
     return (
       <div>
@@ -60,7 +74,7 @@ class ProfilePage extends React.Component {
               lub przyjdź osobiście w godz. <b>9:00-12:00</b> (od poniedziałku do piątku).
               </h3>              
               <p>  &nbsp;</p>
-              <Grid container spacing={48} justify="space-between">
+              <Grid container spacing={40} justify="space-between">
                 <Grid item xs={6}>
                     <h4><b>
                     Działoszyn
@@ -73,7 +87,7 @@ class ProfilePage extends React.Component {
                     </h4>
                 </Grid>
                 <Grid item xs={6} direction="column-reverse">
-                  <Button color="info" ><Phone /> 502 125 790</Button>
+                  <Button color="info" href="tel:+502125790"><Phone />502 125 790</Button>
                   <Button color="success" ><Email /> malgorzata.karolak@gmail.com</Button>
                   <Button color="facebook" ><i className={classes.socialIcons + "  fab fa-facebook"} /> /dietetykaiodchudzanie</Button>
                 </Grid>
@@ -110,7 +124,9 @@ class ProfilePage extends React.Component {
                     formControlProps={{
                       fullWidth: false
                     }}
+                    onChange={this.chandleChange}
                   />
+                  <input placeholder="enter username" onChange={this.chandleChange}/>
                 </GridItem>
                 <GridItem xs={10} sm={10} md={10} lg={10}>
                   <CustomInput
