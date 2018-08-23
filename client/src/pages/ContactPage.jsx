@@ -131,11 +131,11 @@ class ProfilePage extends React.Component {
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Link to={"/api/passwords"} className={classes.link}>
-                    <Button color="rose">
+                  {/* <Link to={"/api/passwords"} className={classes.link}> */}
+                    <Button href="/api/passwords" color="rose">
                         Wyczyść
                     </Button>
-                  </Link>
+                  {/* </Link> */}
                 </Grid>
               </Grid>
               <p>  &nbsp;</p>
