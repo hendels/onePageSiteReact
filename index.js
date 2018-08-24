@@ -29,6 +29,13 @@ app.get('/', function(request, response) {
   response.render('pages/index');
 });
 // Put all API endpoints under '/api'
+
+const usersData= [];
+let getData = () => {
+  axios.get('/api/senddata')
+     .then(res => usersData.push(res.data))
+     .catch(err => console.log(err.data))
+  }
 app.get('/api/passwords', (req, res) => {
     const count = 5;
   
@@ -65,7 +72,9 @@ app.get('*', (req, res) => {
 
 var api_key = process.env.MAILGUN_API_KEY;
 var domain = process.env.MAILGUN_DOMAIN;
-var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
+var mailgunApiKey = "ccc83115d2c795ebc91860bdae499400-a4502f89-cc1c9ae8";
+var mailgunDomain = 'sandboxa0f967162ee142029018cbc3d1852cc5.mailgun.org';
+var mailgun = require('mailgun-js')({apiKey: api_key || mailgunApiKey, domain: domain || mailgunDomain});
  
 app.get('/send', function(request, response) {
   
