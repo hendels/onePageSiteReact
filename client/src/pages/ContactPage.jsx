@@ -2,7 +2,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import axios from 'axios';
-import mailgun from 'mailgun-js'
+// import mailgun from 'mailgun-js';
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // @material-ui/core components
@@ -65,24 +65,24 @@ class ProfilePage extends React.Component {
     console.log(this.state.messageText);
   }
   sendEmail(){
-    const api_key = process.env.MAILGUN_API_KEY;
-    const domain = process.env.MAILGUN_DOMAIN;
-    const mailgunApiKey = "ccc83115d2c795ebc91860bdae499400-a4502f89-cc1c9ae8";
-    const mailgunDomain = 'sandboxa0f967162ee142029018cbc3d1852cc5.mailgun.org';
-    const mailgun = require('mailgun-js')({apiKey: api_key || mailgunApiKey, domain: domain || mailgunDomain});
-    const data = {
-      from: 'Power User <' + this.state.emailText + '>',
-      to: 'p.harendarz@gmail.com',
-      subject: 'Wiadomość ze strony',
-      text: this.state.messageText
-    };
+    // const api_key = process.env.MAILGUN_API_KEY;
+    // const domain = process.env.MAILGUN_DOMAIN;
+    // const mailgunApiKey = "ccc83115d2c795ebc91860bdae499400-a4502f89-cc1c9ae8";
+    // const mailgunDomain = 'sandboxa0f967162ee142029018cbc3d1852cc5.mailgun.org';
+    // const mailgun = require('mailgun-js')({apiKey: api_key || mailgunApiKey, domain: domain || mailgunDomain});
+    // const data = {
+    //   from: 'Power User <' + this.state.emailText + '>',
+    //   to: 'p.harendarz@gmail.com',
+    //   subject: 'Wiadomość ze strony',
+    //   text: this.state.messageText
+    // };
      
-    mailgun.messages().send(data, function (error, body) {
-      if (error) {
-        console.log(error);
-      }
-      console.log(body);
-    });
+    // mailgun.messages().send(data, function (error, body) {
+    //   if (error) {
+    //     console.log(error);
+    //   }
+    //   console.log(body);
+    // });
   }
   // sendData = () => {
   //   const url = '/api/senddata';
