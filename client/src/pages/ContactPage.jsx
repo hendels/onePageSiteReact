@@ -33,67 +33,55 @@ class ProfilePage extends React.Component {
       nameText: '',
       emailText: ''
     };
-    this.chandleChangePhone = this.chandleChangePhone.bind(this);
-    this.chandleChangeEmail = this.chandleChangeEmail.bind(this);
-    this.chandleChangeName = this.chandleChangeName.bind(this);
-    this.chandleChangeMessage = this.chandleChangeMessage.bind(this);
+    this.handleChangePhone = this.handleChangePhone.bind(this);
+    this.handleChangeEmail = this.handleChangeEmail.bind(this);
+    this.handleChangeName = this.handleChangeName.bind(this);
+    this.handleChangeMessage = this.handleChangeMessage.bind(this);
+    this.handleSendEmail = this.handleSendEmail.bind(this);
   }
   
-  chandleChangePhone({target}) {
+  handleChangePhone({target}) {
     this.setState ({
       phoneText: target.value
     });
     console.log(this.state.phoneText);
     
   }
-  chandleChangeEmail({target}) {
+  handleChangeEmail({target}) {
     this.setState ({
       emailText: target.value
     });
     console.log(this.state.emailText);
   }
-  chandleChangeName({target}) {
+  handleChangeName({target}) {
     this.setState ({
       nameText: target.value
     });
     console.log(this.state.nameText);
   }
-  chandleChangeMessage({target}) {
+  handleChangeMessage({target}) {
     this.setState ({
       messageText: target.value
     });
     console.log(this.state.messageText);
   }
-  sendEmail(){
-    // const api_key = process.env.MAILGUN_API_KEY;
-    // const domain = process.env.MAILGUN_DOMAIN;
-    // const mailgunApiKey = "ccc83115d2c795ebc91860bdae499400-a4502f89-cc1c9ae8";
-    // const mailgunDomain = 'sandboxa0f967162ee142029018cbc3d1852cc5.mailgun.org';
-    // const mailgun = require('mailgun-js')({apiKey: api_key || mailgunApiKey, domain: domain || mailgunDomain});
-    // const data = {
-    //   from: 'Power User <' + this.state.emailText + '>',
-    //   to: 'p.harendarz@gmail.com',
-    //   subject: 'Wiadomość ze strony',
-    //   text: this.state.messageText
-    // };
-     
-    // mailgun.messages().send(data, function (error, body) {
-    //   if (error) {
-    //     console.log(error);
-    //   }
-    //   console.log(body);
-    // });
-  }
-  // sendData = () => {
-  //   const url = '/api/senddata';
-  //   const reactData = {email: this.state.emailText, message: this.state.messageText, name: this.state.nameText, phone: this.state.phoneText};
-  //   axios.post(url, reactData)
-  //      .then(res => console.log('Data send : ' + this.state.messageText))
-  //      .catch(err => console.log(err.data))
-  //   }
-  onSetResult = (result, skip) =>{
-    // this.setState(applySetResult(result, skip));
-    // console.log(result);
+  async handleSendEmail(e){
+    e.preventDefault();
+    console.log('clicked!');
+    const {       
+      phoneText,
+      messageText,
+      nameText,
+      emailText
+    } = this.state;
+
+    const emailForm = await axios.post('/api/emailForm', {
+      phoneText: phoneText,
+      messageText: messageText,
+      nameText: nameText,
+      emailText: emailText
+    }) 
+
   }
   render() {
     
@@ -163,7 +151,7 @@ class ProfilePage extends React.Component {
                     id="float"
                     formControlProps={{
                       fullWidth: false,
-                      onChange: this.chandleChangeName
+                      onChange: this.handleChangeName
                     }}
                   />
                 </GridItem>
@@ -173,7 +161,7 @@ class ProfilePage extends React.Component {
                     id="float"
                     formControlProps={{
                       fullWidth: false,
-                      onChange: this.chandleChangeEmail
+                      onChange: this.handleChangeEmail
                     }}
                   />
                 </GridItem>
@@ -183,7 +171,7 @@ class ProfilePage extends React.Component {
                     id="float"
                     formControlProps={{
                       fullWidth: false,
-                      onChange: this.chandleChangePhone
+                      onChange: this.handleChangePhone
                     }}
                   />
                 </GridItem>
@@ -193,28 +181,22 @@ class ProfilePage extends React.Component {
                     id="float"
                     formControlProps={{
                       fullWidth: true,
-                      onChange: this.chandleChangeMessage
+                      onChange: this.handleChangeMessage
                       // multiline
                     }}
-                    
-                    
                   />
                 </GridItem>
               </GridContainer>
               <Grid container justify="flex-start">
                 <Grid item>
-                  <Link to={"/send"} className={classes.link}>
-                    <Button color="info">
-                        Wyślij
-                    </Button>
-                  </Link>
+                  <Button color="info" onClick ={this.handleSendEmail}>
+                      Wyślij
+                  </Button>
                 </Grid>
                 <Grid item>
-                  {/* <Link to={"/api/passwords"} className={classes.link}> */}
-                    <Button onClick={this.sendEmail} color="rose">
-                        Wyczyść
-                    </Button>
-                  {/* </Link> */}
+                  <Button onClick={this.sendEmail} color="rose">
+                      Wyczyść
+                  </Button>
                 </Grid>
               </Grid>
               <p>  &nbsp;</p>
