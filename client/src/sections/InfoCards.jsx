@@ -32,7 +32,6 @@ class Cards extends React.Component {
     const { classes } = this.props;
     return (
     <GridContainer justify="center">
-    {/* <div style={{display: "flex", flexWrap: "nowrap", alignItems: "center", justifyContent: "center"}}> */}
       <Card style={{width: "20rem"}}>
         <img
           style={{height: "180px", width: "100%", display: "block"}}
@@ -97,7 +96,6 @@ class Cards extends React.Component {
           <Dialog1/>
         </CardBody>
       </Card>
-    {/* </div> */}
     </GridContainer>
     );
   }

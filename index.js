@@ -12,25 +12,24 @@ console.log('==================start====================');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(express.static(path.join(__dirname, 'client/build')));
-//mailgun
-// if (!prod) {
-//   // const mailgunConfig = require('./config/keys');
-//   // var mailgun = require('mailgun-js')({apiKey: mailgunConfig.mailgunApiKey  
-//   //   , domain: mailgunConfig.mailgunDomain });
-// } else
-// {
-//   console.log('prod envorinment')
-//   var mailgun = require('mailgun-js')({apiKey: process.env.MAILGUN_API_KEY, domain: process.env.MAILGUN_DOMAIN});
-// }
+
 app.post('/api/emailForm', (req, res) =>{
   console.log('...attempting to send email.');
+    let reqFrom = '';
+    console.log('email text = ' + req.body.emailText)
+    if (req.body.emailText !== '') {
+       reqFrom = req.body.emailText }
+    else 
+       {reqFrom = 'p.harendarz@gmail.com'};
+
     var data = {
-      from: req.body.nameText + ' ' + req.body.emailText,
+
+      from: req.body.nameText + ' ' + reqFrom,
       to: 'p.harendarz@gmail.com',
       subject: 'Wiadomość z Twojej strony internetowej!',
       text: req.body.messageText + ' --------------------- numer telefonu: ' + req.body.phoneText 
     };
-     
+    console.log('...sending mail to: ' + reqFrom) ;
     mailgun.messages().send(data, function (error, body) {
       if (error) {
         console.log(error);
@@ -58,27 +57,13 @@ app.get('/api/passwords', (req, res) => {
   
     // Return them as json
     res.json(passwords);
-  
-    // console.log(`Sent ${count} passwords`);
-    // var data = {
-    //   from: 'Power User <p.harendarz@gmail.com>',
-    //   to: 'p.harendarz@gmail.com',
-    //   subject: 'test_mails',
-    //   text: 'Testing some Mailgun send from ONEY!!'
-    // };
-     
-    // mailgun.messages().send(data, function (error, body) {
-    //   if (error) {
-    //     console.log(error);
-    //   }
-    //   console.log(body);
-    // });
   });
 // The "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.
 app.get('*', (req, res) => {
     // res.sendFile(path.join(__dirname+'/client/build/index.html'));
     res.render('pages/index');
+
   });
 //send email
 

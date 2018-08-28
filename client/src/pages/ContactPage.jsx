@@ -21,9 +21,12 @@ import GridItem from "../components/Grid/GridItem.jsx";
 import Parallax from "../components/Parallax/Parallax.jsx";
 import CustomInput from "../components/CustomInput/CustomInput.jsx";
 import Grid from '@material-ui/core/Grid';
+//sections
+import MailConfirmation from '../sections/MailConfirm.jsx';
 //style
 import profilePageStyle from "../assets/jss/material-kit-react/views/profilePage.jsx";
-
+//hoc?
+import Aux from '../hoc/Auxy/Auxy.js';
 class ProfilePage extends React.Component {
   constructor(){
     super();
@@ -37,7 +40,9 @@ class ProfilePage extends React.Component {
     this.handleChangeEmail = this.handleChangeEmail.bind(this);
     this.handleChangeName = this.handleChangeName.bind(this);
     this.handleChangeMessage = this.handleChangeMessage.bind(this);
-    this.handleSendEmail = this.handleSendEmail.bind(this);
+    // this.handleSendEmail = this.handleSendEmail.bind(this);
+    this.handleClearFormFields = this.handleClearFormFields.bind(this);
+
   }
   
   handleChangePhone({target}) {
@@ -65,26 +70,35 @@ class ProfilePage extends React.Component {
     });
     console.log(this.state.messageText);
   }
-  async handleSendEmail(e){
-    e.preventDefault();
-    console.log('clicked!');
-    const {       
-      phoneText,
-      messageText,
-      nameText,
-      emailText
-    } = this.state;
+  // async handleSendEmail(e){
+  //   e.preventDefault();
+  //   console.log('clicked!');
+  //   const {       
+  //     phoneText,
+  //     messageText,
+  //     nameText,
+  //     emailText
+  //   } = this.state;
 
-    const emailForm = await axios.post('/api/emailForm', {
-      phoneText: phoneText,
-      messageText: messageText,
-      nameText: nameText,
-      emailText: emailText
-    }) 
-
+  //   const emailForm = await axios.post('/api/emailForm', {
+  //     phoneText: phoneText,
+  //     messageText: messageText,
+  //     nameText: nameText,
+  //     emailText: emailText
+  //   }) 
+  // }
+  handleClearFormFields(){
+    //e.preventDefault();
+    // alert('call from parent');
+    this.setState({
+      phoneText: '',
+      emailText: '',
+      nameText: '',
+      messageText: ''
+    })
+    console.log('update from child!');
   }
   render() {
-    
     
     const { classes, ...rest } = this.props;
     const imageClasses = classNames(
@@ -109,7 +123,6 @@ class ProfilePage extends React.Component {
         />
         <Parallax small filter image={require("../assets/img/dark_healthy_2.jpg")} />
         <div className={classNames(classes.main, classes.mainRaised)}>
-            {/* <div className={classes.description}> */}
             <div className={classes.container}>
               <p>  &nbsp;</p>
               <p>  &nbsp;</p>
@@ -140,7 +153,6 @@ class ProfilePage extends React.Component {
               </Grid>
               <p>  &nbsp;</p>
               <p>  &nbsp;</p>              
-            {/* </div> */}
               <h3>
               Lub wyślij wiadomość:
               </h3>
@@ -149,6 +161,7 @@ class ProfilePage extends React.Component {
                   <CustomInput
                     labelText="Imię"
                     id="float"
+                    value={this.state.nameText}
                     formControlProps={{
                       fullWidth: false,
                       onChange: this.handleChangeName
@@ -159,6 +172,7 @@ class ProfilePage extends React.Component {
                   <CustomInput
                     labelText="E-mail"
                     id="float"
+                    value={this.state.emailText}
                     formControlProps={{
                       fullWidth: false,
                       onChange: this.handleChangeEmail
@@ -169,6 +183,7 @@ class ProfilePage extends React.Component {
                   <CustomInput
                     labelText="Telefon"
                     id="float"
+                    value={this.state.phoneText}
                     formControlProps={{
                       fullWidth: false,
                       onChange: this.handleChangePhone
@@ -179,6 +194,7 @@ class ProfilePage extends React.Component {
                   <CustomInput
                     labelText="Treść"
                     id="float"
+                    value={this.state.messageText}
                     formControlProps={{
                       fullWidth: true,
                       onChange: this.handleChangeMessage
@@ -189,12 +205,17 @@ class ProfilePage extends React.Component {
               </GridContainer>
               <Grid container justify="flex-start">
                 <Grid item>
-                  <Button color="info" onClick ={this.handleSendEmail}>
-                      Wyślij
-                  </Button>
+                  <MailConfirmation mailFormDetails={this.state} clearFormFields={this.handleClearFormFields}/>
                 </Grid>
                 <Grid item>
-                  <Button onClick={this.sendEmail} color="rose">
+                  <Button color="rose" onClick={() => {
+                    this.setState({
+                      phoneText: '',
+                      emailText: '',
+                      nameText: '',
+                      messageText: ''
+                    })
+                  }}>
                       Wyczyść
                   </Button>
                 </Grid>

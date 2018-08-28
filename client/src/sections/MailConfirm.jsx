@@ -1,4 +1,5 @@
 import React from "react";
+import axios from 'axios';
 // react plugin for creating date-time-picker
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
@@ -17,10 +18,9 @@ import GridItem from "../components/Grid/GridItem.jsx";
 import Button from "../components/CustomButtons/Button.jsx";
 import javascriptStyles from "../assets/jss/material-kit-react/views/components-sections/javascriptStyles.jsx";
 //img
-import image from '../assets/img/photos/3.JPG';
 
 function Transition(props) {
-  return <Slide direction="down" {...props} />;
+  return <Slide direction="right" {...props} />;
 }
 
 class SectionJavascript extends React.Component {
@@ -37,6 +37,8 @@ class SectionJavascript extends React.Component {
       openBottom: false,
       openRight: false
     };
+    this.handleSendEmail = this.handleSendEmail.bind(this);
+    this.handleSendAndClear = this.handleSendAndClear.bind(this);
   }
   handleClickOpen(modal) {
     var x = [];
@@ -48,16 +50,47 @@ class SectionJavascript extends React.Component {
     x[modal] = false;
     this.setState(x);
   }
+  async handleSendEmail(){
+    //e.preventDefault();
+
+    console.log('clicked!');
+    const {       
+      phoneText,
+      messageText,
+      nameText,
+      emailText
+    } = this.props.mailFormDetails;
+
+    const emailForm = await axios.post('/api/emailForm', {
+      phoneText: this.props.mailFormDetails.phoneText,
+      messageText: this.props.mailFormDetails.messageText,
+      nameText: this.props.mailFormDetails.nameText,
+      emailText: this.props.mailFormDetails.emailText
+    }) 
+  }
+  handleSendAndClear(){
+    //e.preventDefault();
+    this.handleSendEmail();
+    this.handleClickOpen("classicModal");
+    this.props.clearFormFields();
+  }
+  componentDidMount(){
+    console.log('mailConfirm - - - mounted!');
+  }
   render() {
     const { classes } = this.props;
     return (
         <div className={classes.container}>
                 <Button
-                  color="success"
-                  size="sm"
-                  onClick={() => this.handleClickOpen("classicModal")}
+                  color="info"                  
+                  onClick={this.handleSendAndClear}
+                //   onClick={() => {
+                //     // this.handleSendEmail();
+                //     this.props.clearFormFields;
+                //     // this.handleClickOpen("classicModal");
+                // }}
                 >
-                  Więcej
+                  Wyślij
                 </Button>
                 <Dialog
                   classes={{
@@ -85,35 +118,8 @@ class SectionJavascript extends React.Component {
                     >
                       <Close className={classes.modalClose} />
                     </IconButton>
-                    <h4 className={classes.modalTitle}>Analiza składu organizmu.</h4>
+                    <h4 className={classes.modalTitle}>Dziękujemy za wiadomość!</h4>
                   </DialogTitle>
-                  <DialogContent
-                    id="classic-modal-slide-description"
-                    className={classes.modalBody}
-                  >
-                  <img
-                    style={{display: "block", borderRadius: "8px", 
-                    marginLeft: "auto",
-                    marginRight: "auto",
-                    width: "50%"}}
-                    src={image}
-                    alt="Card-img-cap"
-                  />
-                    <p>
-                      Far far away, behind the word mountains, far from the
-                      countries Vokalia and Consonantia, there live the blind
-                      texts. Separated they live in Bookmarksgrove right at
-                      the coast of the Semantics, a large language ocean. A
-                      small river named Duden flows by their place and
-                      supplies it with the necessary regelialia. It is a
-                      paradisematic country, in which roasted parts of
-                      sentences fly into your mouth. Even the all-powerful
-                      Pointing has no control about the blind texts it is an
-                      almost unorthographic life One day however a small line
-                      of blind text by the name of Lorem Ipsum decided to
-                      leave for the far World of Grammar.
-                    </p>
-                  </DialogContent>
                   <DialogActions className={classes.modalFooter}>
                     <Button
                       onClick={() => this.handleClose("classicModal")}

@@ -28,7 +28,6 @@ import People from "@material-ui/icons/People";
 class Toolbar extends React.Component{
 
     render(){
-        // const { ...rest } = this.props;
         const { classes, ...rest } = this.props;
         return(
         <div>      
@@ -53,7 +52,6 @@ class Toolbar extends React.Component{
                     <p>  &nbsp;</p>
                     <h1 className={classes.title}>Dietetyka i Odchudzanie.</h1>
                     <h3 className={classes.subtitle}>
-                    {/* Chcesz schudnąć? */}
                     At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium 
                     voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi.
                     </h3>
@@ -75,22 +73,7 @@ class Toolbar extends React.Component{
                 <FirstText/>
                 <InfoCards/>
                 <SecondText/>
-                
             </div>
-            {/* <div className={classNames(classes.main, classes.mainRaised)}>
-                <GridItem md={12} className={classes.textCenter}>
-                    <Link to={"/login-page"} className={classes.link}>
-                        <Button color="purple" size="lg" simple>
-                            Last section
-                        </Button>
-                    </Link>
-                </GridItem>
-            </div> */}
-            {/* <SectionCarousel/>    */}
-            {/* <Button color="rose" round size="sm">
-                <People className={classes.icons} /> Arrow Up!
-            </Button> */}
-            
             <Footer/>
         </div>
             

@@ -26,9 +26,10 @@ function CustomInput({ ...props }) {
     error,
     white,
     inputRootCustomClasses,
-    success
+    success, 
+    value
   } = props;
-
+  // console.log('props for custom input:' + props);
   const labelClasses = classNames({
     [" " + classes.labelRootError]: error,
     [" " + classes.labelRootSuccess]: success && !error
@@ -71,6 +72,7 @@ function CustomInput({ ...props }) {
           underline: underlineClasses
         }}
         id={id}
+        value={value} 
         {...inputProps}
       />
       {error ? (
