@@ -48,9 +48,9 @@ class ProfilePage extends React.Component {
         <Parallax small filter image={require("../assets/img/dark_healthy_2.jpg")} />
         <div className={classNames(classes.main, classes.mainRaised)}>
             <div className={classes.description}>
-              <h2>
-              Cennik
-              </h2>
+            {/* <div className={classes.name}> */}
+              <h3 className={classes.title}>Cennik</h3>
+            {/* </div> */}
               <p style={{textJustify: "inter-word"}}>
               Pri postulant repudiandae ad,
               at latine sanctus explicari vix. Vix ne labore veritus, amet saepe quo ad. Ut brute erant paulo est,

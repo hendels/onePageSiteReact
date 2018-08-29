@@ -34,7 +34,11 @@ class ProfilePage extends React.Component {
       phoneText: '',
       messageText: '',
       nameText: '',
-      emailText: ''
+      emailText: '',
+      errorEmail: false,
+      errorPhone: false,
+      errorMessage: false,
+      updateComponent: true
     };
     this.handleChangePhone = this.handleChangePhone.bind(this);
     this.handleChangeEmail = this.handleChangeEmail.bind(this);
@@ -42,33 +46,32 @@ class ProfilePage extends React.Component {
     this.handleChangeMessage = this.handleChangeMessage.bind(this);
     // this.handleSendEmail = this.handleSendEmail.bind(this);
     this.handleClearFormFields = this.handleClearFormFields.bind(this);
+    // this.handleCheckingFormValues = this.handleCheckingFormValues.bind(this);
 
   }
   
   handleChangePhone({target}) {
-    this.setState ({
-      phoneText: target.value
+    this.setState ({phoneText: target.value}, () => {
+      console.log(`state: ${this.state.phoneText}, value: ${target.value}`);
     });
     console.log(this.state.phoneText);
     
   }
   handleChangeEmail({target}) {
-    this.setState ({
-      emailText: target.value
+    this.setState ({emailText: target.value}, () => {
+      console.log(`state: ${this.state.emailText}, value: ${target.value}`);
     });
-    console.log(this.state.emailText);
   }
   handleChangeName({target}) {
-    this.setState ({
-      nameText: target.value
+    this.setState ({nameText: target.value}, () => {
+      console.log(`state: ${this.state.nameText}, value: ${target.value}`);
     });
-    console.log(this.state.nameText);
   }
   handleChangeMessage({target}) {
-    this.setState ({
-      messageText: target.value
+    this.setState ({messageText: target.value}, () => {
+      console.log(`state: ${this.state.messageText}, value: ${target.value}`);
     });
-    console.log(this.state.messageText);
+    // console.log(this.staste.messageText);
   }
   // async handleSendEmail(e){
   //   e.preventDefault();
@@ -94,10 +97,33 @@ class ProfilePage extends React.Component {
       phoneText: '',
       emailText: '',
       nameText: '',
-      messageText: ''
+      messageText: '',
+      errorEmail: false,
+      errorPhone: false,
+      errorMessage: false
     })
     console.log('update from child!');
   }
+  
+  // componentWillMount(){
+  //   //this.handleCheckingFormValues(true);
+  // }
+  // componentDidMount(){
+  //   this.handleCheckingFormValues(true);
+  // }
+  // componentDidUpdate(prevState){
+  //   console.log('componentDidUpdate')
+  //   if (this.state.messageText !== prevState.messageText) {
+  //     this.handleCheckingFormValues(true);
+  //   }
+  // }
+  // shouldComponentUpdate(nextProps, nextState){
+  //   // console.log('SHOULD');
+  //   // if (this.state.updateComponent === undefined)
+  //   //   return true;
+  //   // else
+  //   //   return this.state.updateComponent;
+  // }
   render() {
     
     const { classes, ...rest } = this.props;
@@ -126,12 +152,12 @@ class ProfilePage extends React.Component {
             <div className={classes.container}>
               <p>  &nbsp;</p>
               <p>  &nbsp;</p>
-              <h2>
-              <b>Zadzwoń i umów się na wizytę </b>
-              </h2>
               <h3>
+              <b>Zadzwoń i umów się na wizytę </b>
+              </h3>
+              <h4>
               lub przyjdź osobiście w godz. <b>9:00-12:00</b> (od poniedziałku do piątku).
-              </h3>              
+              </h4>              
               <p>  &nbsp;</p>
               <Grid container spacing={40} justify="space-between">
                 <Grid item xs={6}>
@@ -147,8 +173,8 @@ class ProfilePage extends React.Component {
                 </Grid>
                 <Grid item xs={6} direction="column-reverse">
                   <Button color="info" href="tel:+502125790"><Phone />502 125 790</Button>
-                  <Button color="success" ><Email /> malgorzata.karolak@gmail.com</Button>
-                  <Button color="facebook" ><i className={classes.socialIcons + "  fab fa-facebook"} /> /dietetykaiodchudzanie</Button>
+                  <Button color="success" href="mailto:malgorzata.karolak4@onet.pl"><Email /> malgorzata.karolak4@onet.pl</Button>
+                  <Button color="facebook" style={{display: "table-cell"}} href="https://www.facebook.com/dietetykaiodchudzanie" target="_blank"><i className={classes.socialIcons + "  fab fa-facebook"} /> /dietetykaiodchudzanie</Button>
                 </Grid>
               </Grid>
               <p>  &nbsp;</p>
@@ -160,7 +186,7 @@ class ProfilePage extends React.Component {
                 <GridItem xs={4} sm={4} md={4} lg={4}>
                   <CustomInput
                     labelText="Imię"
-                    id="float"
+                    id="nameInput"
                     value={this.state.nameText}
                     formControlProps={{
                       fullWidth: false,
@@ -171,8 +197,9 @@ class ProfilePage extends React.Component {
                 <GridItem xs={4} sm={4} md={4} lg={4}>
                   <CustomInput
                     labelText="E-mail"
-                    id="float"
+                    id="emailInput"
                     value={this.state.emailText}
+                    // error={this.state.errorEmail}
                     formControlProps={{
                       fullWidth: false,
                       onChange: this.handleChangeEmail
@@ -182,8 +209,9 @@ class ProfilePage extends React.Component {
                 <GridItem xs={4} sm={4} md={4} lg={4}>
                   <CustomInput
                     labelText="Telefon"
-                    id="float"
+                    id="phoneInput"
                     value={this.state.phoneText}
+                    // error={this.state.errorPhone}
                     formControlProps={{
                       fullWidth: false,
                       onChange: this.handleChangePhone
@@ -193,11 +221,12 @@ class ProfilePage extends React.Component {
                 <GridItem xs={12} sm={12} md={12} lg={12}>
                   <CustomInput
                     labelText="Treść"
-                    id="float"
+                    id="messageInput"
                     value={this.state.messageText}
+                    // error={this.state.errorMessage}
                     formControlProps={{
                       fullWidth: true,
-                      onChange: this.handleChangeMessage
+                      onChange: this.handleChangeMessage,
                       // multiline
                     }}
                   />
@@ -213,7 +242,10 @@ class ProfilePage extends React.Component {
                       phoneText: '',
                       emailText: '',
                       nameText: '',
-                      messageText: ''
+                      messageText: '',
+                      errorEmail: false,
+                      errorPhone: false,
+                      errorMessage: false
                     })
                   }}>
                       Wyczyść

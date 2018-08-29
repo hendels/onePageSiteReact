@@ -39,6 +39,7 @@ class SectionJavascript extends React.Component {
     };
     this.handleSendEmail = this.handleSendEmail.bind(this);
     this.handleSendAndClear = this.handleSendAndClear.bind(this);
+    this.handleCheckingFormValues = this.handleCheckingFormValues.bind(this);
   }
   handleClickOpen(modal) {
     var x = [];
@@ -58,7 +59,7 @@ class SectionJavascript extends React.Component {
       phoneText,
       messageText,
       nameText,
-      emailText
+      emailText,
     } = this.props.mailFormDetails;
 
     const emailForm = await axios.post('/api/emailForm', {
@@ -68,14 +69,70 @@ class SectionJavascript extends React.Component {
       emailText: this.props.mailFormDetails.emailText
     }) 
   }
-  handleSendAndClear(){
+  async handleSendAndClear(){
     //e.preventDefault();
-    this.handleSendEmail();
-    this.handleClickOpen("classicModal");
-    this.props.clearFormFields();
+    const {       
+      errorEmail,
+      errorPhone,
+      errorMessage
+    } = this.props.mailFormDetails;
+    
+    const errString = await this.handleCheckingFormValues();
+    if (errString !== undefined){
+      alert(errString);
+    } else {    
+      this.handleSendEmail();
+      this.handleClickOpen("classicModal");
+      this.props.clearFormFields();
+    }
+      
+  }
+  handleEmailValidation(value){
+      let emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
+      if (emailValid !== null)
+        if (emailValid.length > 3){
+          this.setState({errorEmail: false}, () => {})
+        } else 
+          this.setState({errorEmail: true}, () => {})
+      else
+        this.setState({errorEmail: true}, () => {})
+  }
+  handlePhoneValidation(value){
+    let phoneValid = value.match(/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{3})/);
+    if (phoneValid !== null)
+      if (phoneValid.length > 0){
+        this.setState({errorPhone: false}, () => {})
+      } else 
+        this.setState({errorPhone: true}, () => {})      
+    else
+      this.setState({errorPhone: true}, () => {}) 
+  }
+  handleMessageValidation(value){
+    if (value === '' )
+      this.setState({errorMessage: true}, () => {})
+    else
+      this.setState({errorMessage: false}, () => {}) 
+  }
+  async handleCheckingFormValues(){
+    console.log('--------------------check validations-------------------');
+    var arrErr = [];
+    await this.handleEmailValidation(this.props.mailFormDetails.emailText);
+    await this.handlePhoneValidation(this.props.mailFormDetails.phoneText);
+    await this.handleMessageValidation(this.props.mailFormDetails.messageText);
+
+    console.log('messageErr:::' + null + ' | state - errorMessage:::' + this.state.errorMessage);
+    if (this.state.errorEmail) arrErr.push('Błąd w Polu Email\n');
+    if (this.state.errorPhone) arrErr.push('Błąd w Polu Telefon\n');
+    if (this.state.errorMessage) arrErr.push('Pole Wiadomość nie może być puste\n');
+    if (this.state.errorEmail || this.state.errorPhone || this.state.errorMessage) {
+      var errString = arrErr.join("");
+      return errString;
+    }
+    return undefined;
+    
   }
   componentDidMount(){
-    console.log('mailConfirm - - - mounted!');
+    this.handleCheckingFormValues();
   }
   render() {
     const { classes } = this.props;
@@ -84,11 +141,6 @@ class SectionJavascript extends React.Component {
                 <Button
                   color="info"                  
                   onClick={this.handleSendAndClear}
-                //   onClick={() => {
-                //     // this.handleSendEmail();
-                //     this.props.clearFormFields;
-                //     // this.handleClickOpen("classicModal");
-                // }}
                 >
                   Wyślij
                 </Button>

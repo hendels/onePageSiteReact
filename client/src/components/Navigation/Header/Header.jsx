@@ -15,7 +15,8 @@ import Menu from "@material-ui/icons/Menu";
 import headerStyle from '../../../assets/jss/material-kit-react/components/headerStyle.jsx';
 //imgs
 import Logo from '../../../assets/img/logo_napis.svg';
-import LogoCaption from '../../../assets/img/logo_napis_white.svg';
+import LogoWhite from '../../../assets/img/logo_white.svg';
+import LogoBlack from '../../../assets/img/logo_black.svg';
 //css
 import classesImp from '../../Logo/Logo.css';
 
@@ -23,7 +24,8 @@ class Header extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          mobileOpen: false
+          mobileOpen: false,
+          blackLogo: false
         };
         this.handleDrawerToggle = this.handleDrawerToggle.bind(this);
         this.headerColorChange = this.headerColorChange.bind(this);
@@ -39,6 +41,7 @@ class Header extends React.Component {
       headerColorChange() {
         const { classes, color, changeColorOnScroll } = this.props;
         const windowsScrollTop = window.pageYOffset;
+        // console.log('windowsScrollTop - ' + windowsScrollTop + 'changeColorOnScroll - ' + changeColorOnScroll.height);
         if (windowsScrollTop > changeColorOnScroll.height) {
           document.body
             .getElementsByTagName("header")[0]
@@ -46,6 +49,7 @@ class Header extends React.Component {
           document.body
             .getElementsByTagName("header")[0]
             .classList.add(classes[changeColorOnScroll.color]);
+          this.setState({blackLogo: true}, () => {})
         } else {
           document.body
             .getElementsByTagName("header")[0]
@@ -53,6 +57,7 @@ class Header extends React.Component {
           document.body
             .getElementsByTagName("header")[0]
             .classList.remove(classes[changeColorOnScroll.color]);
+          this.setState({blackLogo: false}, () => {})
         }
       }
       componentWillUnmount() {
@@ -83,16 +88,13 @@ class Header extends React.Component {
           // </Button>
           <div>
             {showBrand ? (
-            <Button
-              color="transparent"
-              target="_blank"
-              className={classes.navLink}
-            >
+            <Button color="transparent" className={classes.navLink}>
               <img src={Logo} className={classesImp.logo}/>
-            </Button>) : (
+            </Button>   
+            ) : (
             <Button color="transparent" className={classes.navLink}>
               <Link to={"/"} className={classes.link}>
-                <img src={LogoCaption} className={classesImp.logo}/>
+                {this.state.blackLogo ? (<img src={LogoBlack} className={classesImp.logo}/>) : (<img src={LogoWhite} className={classesImp.logo}/>)}
               </Link>
             </Button>
             )}

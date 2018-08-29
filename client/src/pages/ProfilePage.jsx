@@ -84,6 +84,10 @@ class ProfilePage extends React.Component {
               </div>
             </div>
           </div>
+          <p>  &nbsp;</p>
+          <p>  &nbsp;</p>
+          <p>  &nbsp;</p>
+          <p>  &nbsp;</p>
         </div>
         <p>  &nbsp;</p>
         <p>  &nbsp;</p>

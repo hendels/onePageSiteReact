@@ -38,7 +38,7 @@ class Toolbar extends React.Component{
                 color="transparent"
                 showBrand
                 changeColorOnScroll={{
-                height: 400,
+                height: 350,
                 color: "black"                
                 }}
                 {...rest}

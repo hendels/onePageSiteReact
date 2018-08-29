@@ -28,9 +28,9 @@ function Footer({ ...props }) {
           <List className={classes.list}>
             <ListItem className={classes.inlineBlock}>
               <a
-                // href="https://www.creative-tim.com/"
                 className={classes.block}
-                target="_blank"
+                // target="_blank"
+                href="mailto:p.harendarz@gmail.com"
               >
                 Nicely Done 2018
               </a>
