@@ -6,6 +6,7 @@ import LandingPage from './components/Navigation/Toolbar/Toolbar.js';
 import AboutMePage from './pages/ProfilePage.jsx';
 import ContactPage from './pages/ContactPage.jsx';
 import PricingPage from './pages/PricingPage.jsx';
+import OfferPage from './pages/OfferPage.jsx';
 
 import ScrollUpArrow from './components/ScrollUpArrow/ScrollUpArrow.jsx'
 
@@ -24,6 +25,7 @@ class App extends Component {
             <Route exact path="/" component={Landing}/>
             <Route exact path="/aboutme" component={AboutMe}/>
             <Route exact path="/contact" component={Contact}/>
+            <Route exact path="/offer" component={Offer}/>
             <Route exact path="/pricing" component={Pricing}/>
           </div>
         </BrowserRouter>
@@ -43,6 +45,9 @@ const Contact = () => {
 }
 const Pricing = () => {
   return <div><PricingPage/></div>
+}
+const Offer = () => {
+  return <div><OfferPage/></div>
 }
 
 export default App;

@@ -1,8 +1,5 @@
 
 import React from "react";
-import { Link } from "react-router-dom";
-import axios from 'axios';
-// import mailgun from 'mailgun-js';
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // @material-ui/core components
@@ -13,7 +10,6 @@ import Email from "@material-ui/icons/Email";
 // core components
 import Header from "../components/Navigation/Header/Header.jsx";
 import HeaderLinks from "../components/Navigation/Header/HeaderLinks.jsx";
-import Input from "@material-ui/core/Input"
 import Footer from "../components/Footer/Footer.jsx";
 import Button from "../components/CustomButtons/Button.jsx";
 import GridContainer from "../components/Grid/GridContainer.jsx";
@@ -23,10 +19,10 @@ import CustomInput from "../components/CustomInput/CustomInput.jsx";
 import Grid from '@material-ui/core/Grid';
 //sections
 import MailConfirmation from '../sections/MailConfirm.jsx';
+import Map from '../sections/Map.jsx';
+
 //style
 import profilePageStyle from "../assets/jss/material-kit-react/views/profilePage.jsx";
-//hoc?
-import Aux from '../hoc/Auxy/Auxy.js';
 class ProfilePage extends React.Component {
   constructor(){
     super();
@@ -44,10 +40,7 @@ class ProfilePage extends React.Component {
     this.handleChangeEmail = this.handleChangeEmail.bind(this);
     this.handleChangeName = this.handleChangeName.bind(this);
     this.handleChangeMessage = this.handleChangeMessage.bind(this);
-    // this.handleSendEmail = this.handleSendEmail.bind(this);
     this.handleClearFormFields = this.handleClearFormFields.bind(this);
-    // this.handleCheckingFormValues = this.handleCheckingFormValues.bind(this);
-
   }
   
   handleChangePhone({target}) {
@@ -71,28 +64,9 @@ class ProfilePage extends React.Component {
     this.setState ({messageText: target.value}, () => {
       console.log(`state: ${this.state.messageText}, value: ${target.value}`);
     });
-    // console.log(this.staste.messageText);
   }
-  // async handleSendEmail(e){
-  //   e.preventDefault();
-  //   console.log('clicked!');
-  //   const {       
-  //     phoneText,
-  //     messageText,
-  //     nameText,
-  //     emailText
-  //   } = this.state;
-
-  //   const emailForm = await axios.post('/api/emailForm', {
-  //     phoneText: phoneText,
-  //     messageText: messageText,
-  //     nameText: nameText,
-  //     emailText: emailText
-  //   }) 
-  // }
   handleClearFormFields(){
     //e.preventDefault();
-    // alert('call from parent');
     this.setState({
       phoneText: '',
       emailText: '',
@@ -102,28 +76,8 @@ class ProfilePage extends React.Component {
       errorPhone: false,
       errorMessage: false
     })
-    console.log('update from child!');
   }
   
-  // componentWillMount(){
-  //   //this.handleCheckingFormValues(true);
-  // }
-  // componentDidMount(){
-  //   this.handleCheckingFormValues(true);
-  // }
-  // componentDidUpdate(prevState){
-  //   console.log('componentDidUpdate')
-  //   if (this.state.messageText !== prevState.messageText) {
-  //     this.handleCheckingFormValues(true);
-  //   }
-  // }
-  // shouldComponentUpdate(nextProps, nextState){
-  //   // console.log('SHOULD');
-  //   // if (this.state.updateComponent === undefined)
-  //   //   return true;
-  //   // else
-  //   //   return this.state.updateComponent;
-  // }
   render() {
     
     const { classes, ...rest } = this.props;
@@ -252,6 +206,11 @@ class ProfilePage extends React.Component {
                   </Button>
                 </Grid>
               </Grid>
+              <p>  &nbsp;</p>
+              <p>  &nbsp;</p>
+              <p>  &nbsp;</p>
+              <Map/>
+              
               <p>  &nbsp;</p>
               <p>  &nbsp;</p>
               <p>  &nbsp;</p>

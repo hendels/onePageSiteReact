@@ -23,7 +23,7 @@ function HeaderLinks({ ...props }) {
       <Link to={"/aboutme"} className={classes.navLink}>
         O Mnie
       </Link>
-      <Link to={"/"} className={classes.navLink}>
+      <Link to={"/offer"} className={classes.navLink}>
         Oferta
       </Link>
       <Link to={"/pricing"} className={classes.navLink}>
