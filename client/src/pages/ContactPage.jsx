@@ -101,7 +101,7 @@ class ProfilePage extends React.Component {
           }}
           {...rest}
         />
-        <Parallax small filter image={require("../assets/img/dark_healthy_2.jpg")} />
+        <Parallax small filter image={require("../assets/img/vegetables.jpg")} />
         <div className={classNames(classes.main, classes.mainRaised)}>
             <div className={classes.container}>
               <p>  &nbsp;</p>
@@ -126,8 +126,8 @@ class ProfilePage extends React.Component {
                     </h4>
                 </Grid>
                 <Grid item xs={6} direction="column-reverse">
-                  <Button color="info" href="tel:+502125790"><Phone />502 125 790</Button>
-                  <Button color="success" href="mailto:malgorzata.karolak4@onet.pl"><Email /> malgorzata.karolak4@onet.pl</Button>
+                  <Button color="primary" href="tel:+502125790"><Phone />502 125 790</Button>
+                  <Button color="primary" href="mailto:malgorzata.karolak4@onet.pl"><Email /> malgorzata.karolak4@onet.pl</Button>
                   <Button color="facebook" style={{display: "table-cell"}} href="https://www.facebook.com/dietetykaiodchudzanie" target="_blank"><i className={classes.socialIcons + "  fab fa-facebook"} /> /dietetykaiodchudzanie</Button>
                 </Grid>
               </Grid>
@@ -191,7 +191,7 @@ class ProfilePage extends React.Component {
                   <MailConfirmation mailFormDetails={this.state} clearFormFields={this.handleClearFormFields}/>
                 </Grid>
                 <Grid item>
-                  <Button color="rose" onClick={() => {
+                  <Button color="danger" onClick={() => {
                     this.setState({
                       phoneText: '',
                       emailText: '',
@@ -208,6 +208,9 @@ class ProfilePage extends React.Component {
               </Grid>
               <p>  &nbsp;</p>
               <p>  &nbsp;</p>
+              <h3>
+              Jesteśmy tutaj:
+              </h3>
               <p>  &nbsp;</p>
               <Map/>
               

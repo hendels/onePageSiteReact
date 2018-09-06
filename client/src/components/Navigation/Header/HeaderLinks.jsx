@@ -32,9 +32,9 @@ function HeaderLinks({ ...props }) {
       <Link to={"/contact"} className={classes.navLink}>
           Kontakt
       </Link>
-      <Link to={"/"} className={classes.navLink}>
+      {/* <Link to={"/"} className={classes.navLink}>
         Opinie klientów
-      </Link>
+      </Link> */}
       <Tooltip
           id="instagram-facebook"
           title="Polub nas!"

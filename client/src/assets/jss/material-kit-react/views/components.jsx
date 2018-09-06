@@ -3,8 +3,10 @@ import { container } from '../../material-kit-react.jsx';
 const componentsStyle = {
   container,
   brand: {
-    color: "#FFFFFF",
-    textAlign: "left"
+    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+    color: "#ABCC26",
+    textAlign: "left",
+    fontWeight: "700"
   },
   title: {
     fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',

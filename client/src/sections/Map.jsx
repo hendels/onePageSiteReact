@@ -1,6 +1,5 @@
 import React from 'react';
 import GoogleMapReact from 'google-map-react';
-// import classesImp from '../../Logo/Logo.css';
 import Logo from '../assets/img/logo_napis_white.svg';
 
 const AnyReactComponent = ({ text }) => (

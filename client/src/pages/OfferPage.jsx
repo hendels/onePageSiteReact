@@ -30,7 +30,7 @@ class OfferPage extends React.Component {
                 }}
                 {...rest}
             />
-            <Parallax small filter image={require("../assets/img/dark_healthy_2.jpg")} />
+            <Parallax small filter image={require("../assets/img/vegetables.jpg")} />
             <div className={classNames(classes.main, classes.mainRaised)}>
                 <div className={classes.description}>
                 {/* <div className={classes.name}> */}

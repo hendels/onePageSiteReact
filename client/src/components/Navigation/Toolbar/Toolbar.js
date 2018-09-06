@@ -23,7 +23,7 @@ import PricingTable from '../../../sections/PricingTable.jsx';
 //css
 
 //icons
-import People from "@material-ui/icons/People";
+import SentimentSatisfied from "@material-ui/icons/SentimentSatisfied";
 
 class Toolbar extends React.Component{
 
@@ -35,7 +35,7 @@ class Toolbar extends React.Component{
                 brand="Logo_Button"
                 rightLinks={<HeaderLinks />}
                 fixed
-                color="transparent"
+                color="white"
                 showBrand
                 changeColorOnScroll={{
                 height: 350,
@@ -43,14 +43,15 @@ class Toolbar extends React.Component{
                 }}
                 {...rest}
             />                 
-            <Parallax image={require('../../../assets/img/healthy_person_1.jpg')}>
+            <Parallax image={require('../../../assets/img/morelebez.jpg')}>
             <div className={classes.container}>
                 <GridContainer>
                 <GridItem>
-                    <div className={classes.brand}>
+                    <div >
+                    {/* <div className={classes.brand}> */}
                     <p>  &nbsp;</p>
                     <p>  &nbsp;</p>
-                    <h1 className={classes.title}>Dietetyka i Odchudzanie.</h1>
+                    <h1 >Dietetyka i Odchudzanie.</h1>
                     <h3 className={classes.subtitle}>
                     At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium 
                     voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi.
@@ -58,8 +59,8 @@ class Toolbar extends React.Component{
                     <GridContainer justify="center">
                         <GridItem>
                             <Link to={"/aboutme"} className={classes.link}>
-                                <Button color="rose" round size="sm">
-                                    <People className={classes.icons} /> O mnie
+                                <Button color="warning" round size="sm">
+                                <SentimentSatisfied className={classes.icons} /> O mnie 
                                 </Button>
                             </Link>
                         </GridItem>

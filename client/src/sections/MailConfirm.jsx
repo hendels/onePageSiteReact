@@ -139,7 +139,7 @@ class SectionJavascript extends React.Component {
     return (
         <div className={classes.container}>
                 <Button
-                  color="info"                  
+                  color="success"                  
                   onClick={this.handleSendAndClear}
                 >
                   Wyślij

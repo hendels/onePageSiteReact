@@ -73,9 +73,9 @@ const defaultFont = {
 
 const primaryColor = "#4c5b72";
 // const primaryColor = "#9c27b0";
-const warningColor = "#ff9800";
+const warningColor = "#FD8505";
 const dangerColor = "#f44336";
-const successColor = "#33a09e";
+const successColor = "#ABCC26";
 const infoColor = "#00acc1";
 const roseColor = "#e91e63";
 const grayColor = "#999999";
@@ -161,11 +161,19 @@ const defaultBoxShadow = {
 const title = {
   color: "#3C4858",
   margin: "1.75rem 0 0.875rem",
-  textDecoration: "none",
+  // textDecoration: "none",
+  // textShadow: '2px 2px #ff0000',
   fontWeight: "700",
   fontFamily: `"Roboto Slab", "Times New Roman", serif`
 };
-
+const mainTitle = {
+  // color: '#5454e0',
+  margin: "1.75rem 0 0.875rem",
+  // textDecoration: "none",
+  // textShadow: '2px 2px #ff0000',
+  fontWeight: "700",
+  // fontFamily: `"Roboto Slab", "Times New Roman", serif`
+};
 const cardTitle = {
   ...title,
   marginTop: ".625rem"
@@ -223,6 +231,7 @@ export {
   cardHeader,
   defaultBoxShadow,
   title,
+  mainTitle,
   cardTitle,
   cardLink,
   cardSubtitle,

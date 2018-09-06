@@ -1,17 +1,22 @@
 import React from 'react';
+import { Link } from "react-router-dom";
+
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import StepContent from '@material-ui/core/StepContent';
-import Button from '@material-ui/core/Button';
+// import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+import Button from "../components/CustomButtons/Button.jsx";
 
 import image1 from '../assets/img/photos/3.JPG';
 import image2 from '../assets/img/photos/2.JPG';
 import image3 from '../assets/img/photos/1.JPG';
+//icons
+import Check from "@material-ui/icons/Check";
 
 const styles = theme => ({
   root: {
@@ -138,9 +143,30 @@ class VerticalLinearStepper extends React.Component {
       <div className={classes.root}>
         <Stepper activeStep={activeStep} orientation="vertical">
           {steps.map((label, index) => {
+            const props = {};
+            const labelProps = {};
+            labelProps.icon = (
+              <div
+                style={{
+                  backgroundColor: "#FD8505",
+                  width: "25px",
+                  padding: "2px",
+                  textAlign: "center",
+                  height: "25px",
+                  fontFamily: `"Roboto Slab", "Times New Roman", serif`,
+                  fontSize: "10px",
+                  fontWeight: "700",
+                  borderRadius: "100%",
+                  color: "white"
+                }}
+              >
+                {index === activeStep ? index + 1: <Check/> }
+              </div>
+            );
             return (
               <Step key={label}>
-                <StepLabel>{label}</StepLabel>
+                {/* <StepLabel>{label}</StepLabel> */}
+                <StepLabel {...labelProps}>{label}</StepLabel>
                 <StepContent>
                   <Typography>{getStepContent(index)}</Typography>
                   <div className={classes.actionsContainer}>
@@ -148,17 +174,18 @@ class VerticalLinearStepper extends React.Component {
                       <Button
                         disabled={activeStep === 0}
                         onClick={this.handleBack}
+                        color='primary'
                         className={classes.button}
                       >
                         Wstecz
                       </Button>
                       <Button
                         variant="contained"
-                        color="primary"
+                        color="success"
                         onClick={this.handleNext}
                         className={classes.button}
                       >
-                        {activeStep === steps.length - 1 ? 'Zakończ' : 'Następny'}
+                        {activeStep === steps.length - 1 ? 'Zakończ' : 'Dalej'}
                       </Button>
                     </div>
                   </div>
@@ -169,10 +196,15 @@ class VerticalLinearStepper extends React.Component {
         </Stepper>
         {activeStep === steps.length && (
           <Paper square elevation={0} className={classes.resetContainer}>
-            <Typography>Tekst końcowy</Typography>
-            <Button onClick={this.handleReset} className={classes.button}>
+            <Typography>Zapraszam do kontaktu</Typography>
+            <Button onClick={this.handleReset} className={classes.button} color="primary">
               Początek
             </Button>
+            <Link to={"/contact"} className={classes.link}>
+              <Button onClick={this.handleReset} className={classes.button} color="success">
+                Kontakt
+              </Button>
+            </Link>
           </Paper>
         )}
       </div>
