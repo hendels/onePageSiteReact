@@ -160,7 +160,7 @@ class VerticalLinearStepper extends React.Component {
                   color: "white"
                 }}
               >
-                {index === activeStep ? index + 1: <Check/> }
+                {index === activeStep ? (index + 1):(index < activeStep ? <Check/> : '?')}              
               </div>
             );
             return (
